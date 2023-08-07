@@ -1,6 +1,15 @@
 <main class="container">
   <%= link_to  sanitize("&larr; Back to tasks"), tasks_path %>
-  <div class="header">
-    <h1><%= @task.task_name %></h1>
+  <div class="task_info">
+    <div class="task_header">
+      <h1><%= @task.task_name %></h1>
+      <% priority = get_priority(@task) %>
+      <span>Priority: <%= priority.priority %></span>
+      <br>
+      <span>Level: <%= priority.level %></span>
+    </div>
+    <div class="task_body">
+      <%= @task.description %>
+    </div>
   </div>
 </main>
