@@ -5,6 +5,9 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
   
+  def show
+  end 
+  
   def new
     @task = Task.new
   end
@@ -31,8 +34,11 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-  end 
+  def destroy
+    @task.destroy
+    
+    redirect_to tasks_path, notice: "Task was successfully deleted."
+  end
 
   private
 
