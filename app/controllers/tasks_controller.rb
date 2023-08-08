@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authorize
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -36,7 +37,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    
+
     redirect_to tasks_path, notice: "Task was successfully deleted."
   end
 
