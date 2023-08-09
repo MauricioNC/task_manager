@@ -1,4 +1,13 @@
 <%= form_with model: @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="errors">
+      <% @user.errors.each_with_index do |e, idx| %>
+        <div class="error_<%= idx %>">
+          <%= e.message%>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <div class="form-gorup">
     <%= f.label :name, placeholder: "Name" %>
     <%= f.text_field :name, placeholder: "Name" %>

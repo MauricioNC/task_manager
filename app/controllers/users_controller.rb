@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "User was created successfully"
     else
-      render "sessions/new", error: "Something went wrong, please try again"
+      render :new, status: :unprocessable_entity
     end
   end
 
