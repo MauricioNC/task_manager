@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :authorize
 
+  add_flash_types :error, :success
+
   private
   
   def current_user

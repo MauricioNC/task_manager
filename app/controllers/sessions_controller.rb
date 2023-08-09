@@ -9,9 +9,14 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to tasks_path
+      respond_to do |format|
+        format.html { redirect_to tasks_path, success: "Welcome back! #{@user.username}" }
+      end
     else
-      render :login, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :login, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:error] = "Invalid email or password" }
+      end
     end
   end
 

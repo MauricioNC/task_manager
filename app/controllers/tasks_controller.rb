@@ -14,13 +14,18 @@ class TasksController < ApplicationController
   end
   
   def create
-    @user = User.first
-    @task = @user.tasks.build(task_params)
+    @task = @current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to root_path, notice: "Task was successfully created."
+      respond_to do |format|
+        format.html { redirect_to root_path, success: "Task was successfully created" }
+        format.turbo_stream { flash.now[:success] = "Task was successfully created" }
+      end
     else
-      render :new  
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:error] = "Something went wrong creating new task, please try again" }
+      end
     end
   end
 
@@ -29,16 +34,29 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, notice: "Task was updated successfully"
+      respond_to do |format|
+        format.html { redirect_to tasks_path, success: "Task was updated successfully" }
+        format.turbo_stream { flash.now[:success] = "Task was updated successfully" }
+      end
     else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:error] = "Something went wrong updating task '#{@task.task_name}', please try again" }
+      end
     end
   end
 
   def destroy
-    @task.destroy
-
-    redirect_to tasks_path, notice: "Task was successfully deleted."
+    if @task.destroy
+      respond_to do |format|
+        format.html
+        format.turbo_stream { flash.now[:success] = "Task was deleted successfully"}
+      end
+    else
+      respond_to do |format|
+        format.html { render :index, error: "Error deleting task '#{@task.task_name}', please try again", status: :unprocessable_entity }
+      end
+    end
   end
 
   private

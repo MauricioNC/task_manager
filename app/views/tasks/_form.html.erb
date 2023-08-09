@@ -11,4 +11,5 @@
     <%= f.select :priority_id, Priority.order(:level).map { |priority| [priority.priority, priority.id] } %>
   </div>
   <%= f.submit %>
+  <%= link_to  "Cancel", tasks_path %>
 <% end %>

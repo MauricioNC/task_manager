@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= flash[:notice] %>
+    <%= turbo_frame_tag "flash_messages" do %>
+      <%= render "layouts/flash" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
