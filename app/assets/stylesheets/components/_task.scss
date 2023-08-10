@@ -1,0 +1,55 @@
+#new_task {
+  width: 50%;
+}
+
+#tasks {
+  padding: 8px;
+  width: 100%;
+}
+
+.task-item, .task_actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-item {
+  padding: 5px 20px;
+  justify-content: space-between;
+  box-shadow: 1px 3px 10px 1px #0a0a0a65;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  // background-color: $primary;
+
+  & > a {
+    color: $light;
+    font-weight: 500;
+  }
+}
+
+.task_actions {
+  // background-color: $purple;
+  gap: 5px;
+}
+
+.task_info {
+  display: flex;
+  flex-direction: column;
+  min-width: 70%;
+  
+  & > .btn {
+    width: 150px;
+    margin-bottom: 30px;
+  }
+  
+  .task_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .lower, .normal { color: $primary; font-weight: 500; }
+  .high { color: $warn; font-weight: 500; }
+  .critical { color: $danger; font-weight: 500; }
+}

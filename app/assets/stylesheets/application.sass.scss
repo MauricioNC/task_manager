@@ -1,1 +1,10 @@
 // Entry point for your Sass build
+@import "config/variables";
+@import "config/reset";
+@import "layouts/container";
+@import "layouts/header";
+@import "layouts/navbar";
+@import "components/button";
+@import "components/form";
+@import "components/task";
+@import "components/visually_hidden";

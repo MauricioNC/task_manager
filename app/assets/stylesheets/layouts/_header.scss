@@ -1,0 +1,13 @@
+.header {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: $f-sz-xxxxl;
+    font-weight: 00;
+  }
+}

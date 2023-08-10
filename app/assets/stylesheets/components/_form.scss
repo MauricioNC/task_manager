@@ -1,0 +1,46 @@
+input[type="text"], textarea, select {
+  width: 100%;
+}
+
+input, textarea, select {
+  color: $dark;
+  font-size: $f-sz-m;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #e0e0e0;
+}
+
+input:focus, textarea:focus, select:focus {
+  border: 2px solid $info;
+}
+
+input[type="submit"] {
+  border: none;
+}
+
+textarea {
+  resize: none;
+  height: 90px;
+  font-family: $f-fam;
+}
+
+select {
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.login-form, .header-form {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.header-form {
+  margin-bottom: 50px;
+  margin-top: 70px;
+
+  h1 { font-size: $f-sz-xxxxl; }
+  p { font-size: $f-sz-l; }
+}

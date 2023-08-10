@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-width: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: $f-fam;
+  color: $light;
+  background-color: $dark;
+}
+
+button, input, textarea, select {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}

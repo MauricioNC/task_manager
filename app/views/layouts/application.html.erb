@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <% if @current_user %>
+      <div class="navbar">
+        <%= link_to "Log out",
+                    "/logout",
+                    method: :delete,
+                    class: "btn btn--info" %>
+      </div>
+    <% end %>
     <%= turbo_frame_tag "flash_messages" do %>
       <%= render "layouts/flash" %>
     <% end %>
