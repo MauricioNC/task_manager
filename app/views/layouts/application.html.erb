@@ -19,9 +19,13 @@
                     class: "btn btn--info" %>
       </div>
     <% end %>
-    <%= turbo_frame_tag "flash_messages" do %>
-      <%= render "layouts/flash" %>
-    <% end %>
+
+    <div class="flash_messages">
+      <%= turbo_frame_tag "flash_messages" do %>
+        <%= render "layouts/flash" %>
+      <% end %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

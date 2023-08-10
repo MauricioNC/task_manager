@@ -1,0 +1,104 @@
+.flash_messages {
+  width: 350px;
+  background-color: transparent;
+  position: absolute;
+
+  .message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    position: relative;
+
+    & > div {
+      font-weight: 500;
+    }
+
+    &:has(.success) {
+      background-color: $primary;
+
+      .btn--close:hover {
+        background-color: $primary-dark;
+      }
+    }
+
+    &:has(.error) {
+      background-color: $danger;
+
+      .btn--close:hover {
+        background-color: $danger-dark;
+      }
+    }
+
+    &:has(.notice) {
+      background-color: $info;
+
+      .btn--close:hover {
+        background-color: $info-dark;
+      }
+    }
+  }
+}
+
+.message_progressbar {
+  width: 0%;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  animation: progressbar 8s;
+  
+  &:has(.success) {
+    background-color: $primary-dark;
+  }
+
+  &:has(.error) {
+    background-color: $danger-dark;
+  }
+
+  &:has(.notice) {
+    background-color: $info-dark;
+  }
+}
+
+@keyframes progressbar {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+.show {
+  animation: show 3s;
+  z-index: 1;
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.hide {
+  animation: hide 3s;
+  z-index: 1;
+
+  @keyframes hide {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}

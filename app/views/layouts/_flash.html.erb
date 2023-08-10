@@ -1,6 +1,11 @@
 <% flash.each do |type, msg| %>
-  <div id="<%= type %>" data-controller="flash">
-    <%= msg %>
-    <button type="button" data-action="flash#dismiss">X</button>
+  <div class="message" data-controller="flash">
+    <div class="message_progressbar">
+      <div class="progressbar <%= type %>"></div>
+    </div>
+    <div class="<%= type %>">
+      <%= msg %>
+    </div>
+    <button type="button" data-action="flash#dismiss" class="btn btn--close">x</button>
   </div>
 <% end %>

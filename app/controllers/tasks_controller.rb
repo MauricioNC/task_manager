@@ -18,8 +18,8 @@ class TasksController < ApplicationController
 
     if @task.save
       respond_to do |format|
-        format.html { redirect_to root_path, success: "Task was successfully created" }
-        format.turbo_stream { flash.now[:success] = "Task was successfully created" }
+        format.html { redirect_to root_path }
+        format.turbo_stream { flash.now[:success] = "Task '#{@task.task_name}' was successfully created" }
       end
     else
       respond_to do |format|
@@ -35,8 +35,8 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       respond_to do |format|
-        format.html { redirect_to tasks_path, success: "Task was updated successfully" }
-        format.turbo_stream { flash.now[:success] = "Task was updated successfully" }
+        format.html { redirect_to tasks_path }
+        format.turbo_stream { flash.now[:success] = "Task '#{@task.task_name}' was updated successfully" }
       end
     else
       respond_to do |format|
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     if @task.destroy
       respond_to do |format|
         format.html
-        format.turbo_stream { flash.now[:success] = "Task was deleted successfully"}
+        format.turbo_stream { flash.now[:success] = "Task '#{@task.task_name}' was deleted successfully"}
       end
     else
       respond_to do |format|
