@@ -10,14 +10,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      session[:user_id] = @user.id
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.turbo_stream { flash.now[:success] = "User '#{@user.username}' was created successfully" }
+    respond_to do |format|
+      if @user.save
+        session[:user_id] = @user.id
+        format.html { redirect_to tasks_path }
+      else
+        format.html { render :new, status: :unprocessable_entity }
       end
-    else
-      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +24,6 @@ class UsersController < ApplicationController
     unless @user.update(user_params)
       respond_to do |format|
         format.html { render :edit }
-        format.turbo_stream { flash.now[:error] = "Unable to update user '#{@user.username}' information, please try again" }
       end
     end
   end
@@ -34,12 +32,10 @@ class UsersController < ApplicationController
     if @user.destroy
       respond_to do |format|
         format.html { redirect_to login_path }
-        format.turbo_stream { flash.now[:success] = "User '#{@user.username}' was deleted successfully" }
       end
     else
       respond_to do |format|
         format.html { redirect_to tasks_path }
-        format.turbo_stream { flash.now[:error] = "Something went wrong deleting '#{@user.username}' user, please try again" }
       end
     end
   end
